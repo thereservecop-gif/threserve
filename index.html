@@ -1,126 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Reserve by FrosFood</title>
+  <title>Frosfood Reserve – Full Package Consent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root{
-      --bg:#0b0f14; --card:#121826; --muted:#9aa4b2; --text:#e6edf3;
-      --accent:#c84b4b; --accent2:#3fb950; --border:#223049;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
     }
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);}
-    .wrap{max-width:980px;margin:0 auto;padding:24px;}
-    .hero{padding:18px 0 10px}
-    h1{margin:0 0 6px;font-size:28px;letter-spacing:.3px}
-    .sub{color:var(--muted);line-height:1.5;margin:0 0 18px}
-    .notice{background:#0f172a;border:1px solid var(--border);padding:12px 14px;border-radius:12px;color:var(--muted);font-size:14px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
-    .tag{display:inline-flex;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
-    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent2)}
-    .title{font-weight:700;font-size:16px;margin:0}
-    .desc{color:var(--muted);font-size:14px;line-height:1.45;margin:0}
-    .btn{margin-top:auto;background:var(--accent);border:none;color:white;padding:10px 12px;border-radius:12px;font-weight:700;cursor:pointer}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:16px}
-    .modal.open{display:flex}
-    .modalCard{width:min(560px,100%);background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-    .modalTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-    .x{background:transparent;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:6px 10px;cursor:pointer}
-    .consentBox{margin-top:10px;background:#0f172a;border:1px solid var(--border);border-radius:12px;padding:12px}
-    label{display:flex;gap:10px;align-items:flex-start;color:var(--text);font-size:14px;line-height:1.4}
-    input[type="checkbox"]{margin-top:3px;transform:scale(1.2)}
-    .actions{display:flex;gap:10px;margin-top:14px}
-    .pay{flex:1;background:var(--accent2);border:none;color:#04110a;padding:12px;border-radius:12px;font-weight:800;cursor:pointer}
-    .small{color:var(--muted);font-size:12px;margin-top:10px}
-    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    .consent-box {
+      background: #fafafa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #1a7f37;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="hero">
-      <h1>The Reserve by FrosFood</h1>
-      <p class="sub">December will not stress you. Choose your package, accept the consent, then pay via Paystack.</p>
-      <div class="notice">
-        <strong>2026 Cycle:</strong> March → December. <strong>Payment window:</strong> 1st–7th of each month.
-      </div>
-    </div>
 
-    <div class="grid">
-      <div class="card">
-        <div class="tag"><span class="dot"></span> Households</div>
-        <p class="title">Full Reserve Package</p>
-        <p class="desc">Complete December coverage for families.</p>
-        <button class="btn" onclick="openConsent('FULL')">Continue</button>
-      </div>
+<div class="container">
 
-      <div class="card">
-        <div class="tag"><span class="dot"></span> Essentials</div>
-        <p class="title">Essential Reserve Package</p>
-        <p class="desc">Core household essentials.</p>
-        <button class="btn" onclick="openConsent('ESSENTIAL')">Continue</button>
-      </div>
+<h2>Frosfood Reserve – Full Package</h2>
+<p><strong>Please review and confirm before proceeding to payment.</strong></p>
 
-      <div class="card">
-        <div class="tag"><span class="dot"></span> Staff Welfare</div>
-        <p class="title">Staff Care Package</p>
-        <p class="desc">Structured staff welfare packs.</p>
-        <button class="btn" onclick="openConsent('STAFF')">Continue</button>
-      </div>
-    </div>
-  </div>
+<div class="consent-box">
 
-  <div class="modal" id="modal">
-    <div class="modalCard">
-      <div class="modalTop">
-        <h2 style="margin:0;font-size:18px">Confirm & Continue</h2>
-        <button class="x" onclick="closeConsent()">Close</button>
-      </div>
+<p><strong>By proceeding with payment, you acknowledge and agree to the following:</strong></p>
 
-      <div class="consentBox">
-        <label>
-          <input type="checkbox" id="consentCheck" />
-          I agree to the FrosFood Reserve Policy & Protection Terms.
-        </label>
-      </div>
+<ul>
+<li>Frosfood Reserve operates as a structured food allocation system and not as a savings, thrift, or investment platform.</li>
 
-      <div class="actions">
-        <button class="pay" id="payBtn" disabled onclick="goPaystack()">Pay with Paystack</button>
-      </div>
-    </div>
-  </div>
+<li>Your monthly payment is a contribution toward your December Food Reserve allocation for the 2026 cycle (March–December).</li>
 
-  <script>
-    const PAYSTACK = {
-      FULL: "https://paystack.shop/pay/dulwcgjf1e",
-      ESSENTIAL: "https://paystack.shop/pay/1cle2qbqty",
-      STAFF: "https://paystack.shop/pay/q5wqxro91g"
-    };
+<li>Contributions made before the Allocation Lock Date (End of Q2) may be refunded minus a 15% Early Exit Administrative and Allocation Reversal Fee.</li>
 
-    let selectedPack = null;
+<li>After the Allocation Lock Date, contributions are committed to secured bulk procurement and are not refundable in cash.</li>
 
-    const modal = document.getElementById("modal");
-    const consentCheck = document.getElementById("consentCheck");
-    const payBtn = document.getElementById("payBtn");
+<li>If full contributions are not completed by the final deadline, you will receive a proportional food allocation strictly based on the value contributed.</li>
 
-    consentCheck.addEventListener("change", () => {
-      payBtn.disabled = !consentCheck.checked;
-    });
+<li>Late payments may not benefit from early price protection or secured bulk purchase pricing.</li>
 
-    function openConsent(pack){
-      selectedPack = pack;
-      consentCheck.checked = false;
-      payBtn.disabled = true;
-      modal.classList.add("open");
-    }
+<li>Item substitutions may occur in cases of supplier shortages or market volatility, while maintaining equivalent value.</li>
 
-    function closeConsent(){
-      modal.classList.remove("open");
-    }
+<li>Doorstep delivery applies only during the official December distribution window and within designated service areas.</li>
 
-    function goPaystack(){
-      window.location.href = PAYSTACK[selectedPack];
-    }
-  </script>
+</ul>
+
+<p><strong>By ticking the box below and proceeding to payment, you confirm acceptance of these terms and the full Customer Agreement.</strong></p>
+
+</div>
+
+<label>
+  <input type="checkbox" id="agree" onclick="toggleButton()">  
+  I have read and agree to the Frosfood Reserve Payment Terms.
+</label>
+
+<br><br>
+
+<button id="payButton" disabled onclick="proceedToPayment()">
+Proceed to Secure Payment
+</button>
+
+</div>
+
+<script>
+function toggleButton() {
+  document.getElementById("payButton").disabled = !document.getElementById("agree").checked;
+}
+
+function proceedToPayment() {
+  window.location.href = "https://paystack.shop/pay/dulwcgjf1e";
+}
+</script>
+
 </body>
 </html>
