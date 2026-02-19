@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Essential Reserve – Payment Consent</title>
+<title>Essential Reserve | Payment Consent</title>
 
 <style>
 :root{
@@ -17,7 +17,7 @@
 
 body{
   margin:0;
-  font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
   background:var(--bg);
   color:var(--text);
 }
@@ -38,7 +38,6 @@ body{
 h1{
   margin-top:0;
   font-size:28px;
-  letter-spacing:0.5px;
 }
 
 .subtitle{
@@ -56,7 +55,7 @@ h1{
 }
 
 ul{
-  padding-left:18px;
+  padding-left:20px;
   line-height:1.7;
   font-size:15px;
 }
@@ -83,16 +82,14 @@ button{
   color:white;
   font-size:16px;
   font-weight:600;
-  cursor:pointer;
-  opacity:0.6;
-}
-
-button.enabled{
-  opacity:1;
-}
-
-button:disabled{
   cursor:not-allowed;
+  opacity:0.5;
+  transition:0.3s ease;
+}
+
+button.active{
+  cursor:pointer;
+  opacity:1;
 }
 </style>
 </head>
@@ -119,9 +116,9 @@ button:disabled{
 
       <li>Your monthly payment is a contribution toward your December Food Reserve allocation.</li>
 
-      <li>Contributions made before the Allocation Lock Date, June 1st, can be refunded minus a 10% Early Exit Administrative and Allocation Reversal Fee.</li>
+      <li>Contributions made before <strong>June 1st (Allocation Lock Date)</strong> may be refunded minus a 15% Early Exit Administrative and Allocation Reversal Fee.</li>
 
-      <li>After the Allocation Lock Date, June 1, all contributions are committed to secured inventory procurement and are not refundable.</li>
+      <li>After <strong>June 1st</strong>, all contributions are committed to secured inventory procurement and are not refundable.</li>
 
       <li>Members who do not complete full contributions by the final contribution deadline will receive a proportional food allocation based strictly on total contributions made relative to the full package value.</li>
 
@@ -139,7 +136,7 @@ button:disabled{
       </label>
     </div>
 
-    <button id="payBtn" disabled>
+    <button id="payBtn">
       Proceed to Payment
     </button>
 
@@ -150,14 +147,22 @@ button:disabled{
 const checkbox = document.getElementById('agree');
 const button = document.getElementById('payBtn');
 
-checkbox.addEventListener('change', function(){
-  button.disabled = !this.checked;
-  button.classList.toggle('enabled', this.checked);
+button.disabled = true;
+
+checkbox.addEventListener('change', function() {
+    if (this.checked) {
+        button.disabled = false;
+        button.classList.add("active");
+    } else {
+        button.disabled = true;
+        button.classList.remove("active");
+    }
 });
 
-button.addEventListener('click', function(){
-  window.location.href = "
-https://paystack.shop/pay/otq1shbdkn";
+button.addEventListener('click', function() {
+    if (!button.disabled) {
+        window.location.href = "https://paystack.shop/pay/1cle2qbqty";
+    }
 });
 </script>
 
