@@ -60,7 +60,7 @@
 
 <li>Your monthly payment is a contribution toward your December Food Reserve allocation for the 2026 cycle (March–December).</li>
 
-<li>Contributions made before the Allocation Lock Date (End of Q2) may be refunded minus a 15% Early Exit Administrative and Allocation Reversal Fee.</li>
+<li>Contributions made before the Allocation Lock Date (June 1ST) may be refunded minus a 10% Early Exit Administrative and Allocation Reversal Fee.</li>
 
 <li>After the Allocation Lock Date, contributions are committed to secured bulk procurement and are not refundable in cash.</li>
 
@@ -100,6 +100,25 @@ function proceedToPayment() {
   window.location.href = "https://paystack.shop/pay/dulwcgjf1e";
 }
 </script>
+<script>
+  // Read referral code from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const refCode = urlParams.get('ref');
 
+  if (refCode) {
+    console.log("Referral Code:", refCode);
+
+    // Store referral in hidden variable
+    window.referralCode = refCode;
+
+    // Optional: Display it on page (for testing)
+    const referralDisplay = document.createElement("p");
+    referralDisplay.style.marginTop = "10px";
+    referralDisplay.style.fontSize = "14px";
+    referralDisplay.style.color = "#aaa";
+    referralDisplay.innerText = "Referral Code: " + refCode;
+    document.querySelector(".card").appendChild(referralDisplay);
+  }
+</script>
 </body>
 </html>
