@@ -116,7 +116,7 @@ button.active{
 
       <li>Your monthly payment is a contribution toward your December Food Reserve allocation.</li>
 
-      <li>Contributions made before <strong>June 1st (Allocation Lock Date)</strong> may be refunded minus a 15% Early Exit Administrative and Allocation Reversal Fee.</li>
+      <li>Contributions made before <strong>June 1st (Allocation Lock Date)</strong> may be refunded minus a 10% Early Exit Administrative and Allocation Reversal Fee.</li>
 
       <li>After <strong>June 1st</strong>, all contributions are committed to secured inventory procurement and are not refundable.</li>
 
@@ -165,6 +165,25 @@ button.addEventListener('click', function() {
     }
 });
 </script>
+<script>
+  // Read referral code from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const refCode = urlParams.get('ref');
 
+  if (refCode) {
+    console.log("Referral Code:", refCode);
+
+    // Store referral in hidden variable
+    window.referralCode = refCode;
+
+    // Optional: Display it on page (for testing)
+    const referralDisplay = document.createElement("p");
+    referralDisplay.style.marginTop = "10px";
+    referralDisplay.style.fontSize = "14px";
+    referralDisplay.style.color = "#aaa";
+    referralDisplay.innerText = "Referral Code: " + refCode;
+    document.querySelector(".card").appendChild(referralDisplay);
+  }
+</script>
 </body>
 </html>
