@@ -161,7 +161,13 @@ checkbox.addEventListener('change', function() {
 
 button.addEventListener('click', function() {
     if (!button.disabled) {
-        window.location.href = "https://paystack.shop/pay/otq1shbdkn";
+        let paymentLink = "https://paystack.shop/pay/otq1shbdkn";
+
+if (window.referralCode) {
+  paymentLink += "?ref=" + window.referralCode;
+}
+
+window.location.href = paymentLink;
     }
 });
 </script>
