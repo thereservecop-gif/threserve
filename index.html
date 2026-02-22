@@ -97,7 +97,13 @@ function toggleButton() {
 }
 
 function proceedToPayment() {
-  window.location.href = "https://paystack.shop/pay/dulwcgjf1e";
+ let paymentLink = "https://paystack.shop/pay/dulwcgjf1e";
+
+if (window.referralCode) {
+  paymentLink += "?ref=" + window.referralCode;
+}
+
+window.location.href = paymentLink; 
 }
 </script>
 <script>
