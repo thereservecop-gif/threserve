@@ -42,10 +42,12 @@
       background-color: #ccc;
       cursor: not-allowed;
     }
-    .ref-display {
+    .referral-display {
       margin-top: 15px;
       font-size: 14px;
-      color: #666;
+      color: #777;
+      text-align: center;
+      font-style: italic;
     }
   </style>
 </head>
@@ -83,55 +85,48 @@
 </div>
 
 <label>
-  <input type="checkbox" id="agree">  
+  <input type="checkbox" id="agree" onclick="toggleButton()">  
   I have read and agree to the Frosfood Reserve Payment Terms.
 </label>
 
 <br><br>
 
-<button id="payButton" disabled>
+<button id="payButton" disabled onclick="proceedToPayment()">
 Proceed to Secure Payment
 </button>
 
-<div id="referralDisplay" class="ref-display"></div>
+<div id="referralDisplay" class="referral-display"></div>
 
 </div>
 
 <script>
-(function() {
-
-  // ===== Read referral from URL =====
+  // Read referral code from URL
   const params = new URLSearchParams(window.location.search);
   const refCode = params.get("ref");
+  window.referralCode = refCode ? refCode.trim() : "";
 
-  let referralCode = "";
-  if (refCode && refCode.trim() !== "") {
-    referralCode = refCode.trim();
+  // Display referral safely
+  if (window.referralCode) {
     document.getElementById("referralDisplay").textContent =
-      "Referral Code: " + referralCode;
+      "Referral Code: " + window.referralCode;
   }
 
-  // ===== Enable button when checkbox checked =====
-  const checkbox = document.getElementById("agree");
-  const button = document.getElementById("payButton");
+  function toggleButton() {
+    document.getElementById("payButton").disabled =
+      !document.getElementById("agree").checked;
+  }
 
-  checkbox.addEventListener("change", function() {
-    button.disabled = !checkbox.checked;
-  });
-
-  // ===== Redirect to Paystack with referral =====
-  button.addEventListener("click", function() {
+  function proceedToPayment() {
     let paymentLink = "https://paystack.shop/pay/6bgk4jhv4n";
 
-    if (referralCode !== "") {
+    if (window.referralCode) {
       const joiner = paymentLink.includes("?") ? "&" : "?";
-      paymentLink += joiner + "ref=" + encodeURIComponent(referralCode);
+      paymentLink += joiner + "ref=" +
+        encodeURIComponent(window.referralCode);
     }
 
     window.location.href = paymentLink;
-  });
-
-})();
+  }
 </script>
 
 </body>
