@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frosfood Reserve – Essential Package</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .consent-box {
+      background: #fafafa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .button-group button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background-color: #1a7f37;
+      color: white;
+    }
+
+    .secondary {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .referral-box {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #eef5ff;
+      border: 1px solid #cdddfc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Frosfood Reserve – Essential Package</h2>
+
+<div id="referralDisplay" class="referral-box" style="display:none;"></div>
+
+<p><strong>Please review and confirm before selecting a payment option.</strong></p>
+
+<div class="consent-box">
+
+<p><strong>By proceeding with payment, you acknowledge and agree to the following:</strong></p>
+
+<ul>
+<li>Frosfood Reserve operates as a structured food allocation system and not as a savings, thrift, or investment platform.</li>
+
+<li>Your monthly payment is a contribution toward your December Food Reserve allocation for the 2026 cycle (March–December).</li>
+
+<li>Contributions made before the Allocation Lock Date (June 1ST) may be refunded minus a 10% Early Exit Administrative and Allocation Reversal Fee.</li>
+
+<li>After the Allocation Lock Date, contributions are committed to secured bulk procurement and are not refundable in cash.</li>
+
+<li>If full contributions are not completed by the final deadline, you will receive a proportional food allocation strictly based on the value contributed.</li>
+
+<li>Late payments may not benefit from early price protection or secured bulk purchase pricing.</li>
+
+<li>Item substitutions may occur in cases of supplier shortages or market volatility, while maintaining equivalent value.</li>
+
+<li>Doorstep delivery applies only during the official December distribution window and within designated service areas.</li>
+
+</ul>
+
+<p><strong>By ticking the box below and proceeding to payment, you confirm acceptance of these terms and the full Customer Agreement.</strong></p>
+
+</div>
+
+<label>
+  <input type="checkbox" id="agree" onclick="toggleButtons()">  
+  I have read and agree to the Frosfood Reserve Payment Terms.
+</label>
+
+<div class="button-group">
+
+  <button id="subscribeBtn" class="primary" disabled onclick="goSubscription()">
+    Subscribe (Automatic Monthly Billing – 10 Months)
+  </button>
+
+  <button id="manualBtn" class="secondary" disabled onclick="goManual()">
+    Pay Monthly Manually (Return Each Month)
+  </button>
+
+</div>
+
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const referralCode = params.get("ref");
+
+  if (referralCode) {
+    const box = document.getElementById("referralDisplay");
+    box.style.display = "block";
+    box.innerText = "You were referred by Ambassador Code: " + referralCode;
+  }
+
+  function toggleButtons() {
+    const enabled = document.getElementById("agree").checked;
+    document.getElementById("subscribeBtn").disabled = !enabled;
+    document.getElementById("manualBtn").disabled = !enabled;
+  }
+
+  function appendReferral(link) {
+    if (referralCode) {
+      const joiner = link.includes("?") ? "&" : "?";
+      return link + joiner + "ref=" + encodeURIComponent(referralCode);
+    }
+    return link;
+  }
+
+  function goSubscription() {
+    window.location.href = appendReferral("https://paystack.shop/pay/otq1shbdkn");
+  }
+
+  function goManual() {
+    window.location.href = appendReferral("https://paystack.shop/pay/n8kwxu590n");
+  }
+</script>
+
+</body>
+</html>
