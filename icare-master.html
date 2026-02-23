@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frosfood Reserve – I CARE Packages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    .consent-box {
+      background: #fafafa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    .package-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+
+    .button-group button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background-color: #1a7f37;
+      color: white;
+    }
+
+    .secondary {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Frosfood Reserve – I CARE Packages</h2>
+
+<p><strong>Please review and confirm before selecting a package.</strong></p>
+
+<div class="consent-box">
+
+<p><strong>By proceeding with payment, you acknowledge and agree to the following:</strong></p>
+
+<ul>
+<li>Frosfood Reserve operates as a structured food allocation system and not as a savings, thrift, or investment platform.</li>
+<li>Your monthly payment contributes toward your December Food Reserve allocation for the 2026 cycle (March–December).</li>
+<li>Contributions made before the Allocation Lock Date (June 1ST) may be refunded minus a 10% Early Exit Administrative Fee.</li>
+<li>After the Allocation Lock Date, contributions are committed to secured procurement and are not refundable in cash.</li>
+<li>If full contributions are not completed, proportional food allocation applies.</li>
+<li>Late payments may not benefit from early price protection.</li>
+<li>Doorstep delivery applies during official December distribution window only.</li>
+</ul>
+
+<p><strong>By ticking below, you confirm acceptance of these terms.</strong></p>
+
+</div>
+
+<label>
+  <input type="checkbox" id="agree" onclick="enablePackages()">  
+  I have read and agree to the Frosfood Reserve Payment Terms.
+</label>
+
+<!-- PACKAGE SELECTION -->
+
+<div id="packageSection" class="hidden">
+
+  <div class="package-box">
+    <h3>I CARE – Essential (₦8,000/month)</h3>
+    <div class="button-group">
+      <button class="primary" onclick="goEssentialSubscription()">
+        Subscribe (AutoPay – Recommended)
+      </button>
+      <button class="secondary" onclick="goEssentialManual()">
+        Pay Monthly Manually
+      </button>
+    </div>
+  </div>
+
+  <div class="package-box">
+    <h3>I CARE – Full Reserve (₦20,000/month)</h3>
+    <div class="button-group">
+      <button class="primary" onclick="goFullSubscription()">
+        Subscribe (AutoPay – Recommended)
+      </button>
+      <button class="secondary" onclick="goFullManual()">
+        Pay Monthly Manually
+      </button>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+
+function enablePackages() {
+  const checked = document.getElementById("agree").checked;
+  document.getElementById("packageSection").classList.toggle("hidden", !checked);
+}
+
+// ESSENTIAL LINKS
+function goEssentialSubscription() {
+  window.location.href = "https://paystack.shop/pay/qes4vqwq53";
+}
+
+function goEssentialManual() {
+  window.location.href = "https://paystack.shop/pay/fbs1hzsdyd";
+}
+
+// FULL LINKS
+function goFullSubscription() {
+  window.location.href = "https://paystack.shop/pay/a23y3j7x0y";
+}
+
+function goFullManual() {
+  window.location.href = "https://paystack.shop/pay/t02nyfdny8";
+}
+
+</script>
+
+</body>
+</html>
