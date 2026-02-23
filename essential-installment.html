@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Frosfood Reserve – Essential Installment Consent</title>
+  <title>Frosfood Reserve – Full Installment Consent</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -42,13 +42,18 @@
       background-color: #ccc;
       cursor: not-allowed;
     }
+    .ref-display {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
 
-<h2>Frosfood Reserve – Essential Installment</h2>
+<h2>Frosfood Reserve – Full Installment</h2>
 <p><strong>Please review and confirm before proceeding to payment.</strong></p>
 
 <div class="consent-box">
@@ -58,7 +63,7 @@
 <ul>
 <li>Frosfood Reserve operates as a structured food allocation system and not as a savings, thrift, or investment platform.</li>
 
-<li>This payment represents an installment toward your Essential Reserve allocation for the 2026 cycle (March–December).</li>
+<li>This payment represents an installment toward your Full Reserve allocation for the 2026 cycle (March–December).</li>
 
 <li>Contributions made before the Allocation Lock Date (June 1ST) may be refunded minus the applicable Early Exit Administrative Fee.</li>
 
@@ -78,38 +83,55 @@
 </div>
 
 <label>
-  <input type="checkbox" id="agree" onclick="toggleButton()">  
+  <input type="checkbox" id="agree">  
   I have read and agree to the Frosfood Reserve Payment Terms.
 </label>
 
 <br><br>
 
-<button id="payButton" disabled onclick="proceedToPayment()">
+<button id="payButton" disabled>
 Proceed to Secure Payment
 </button>
+
+<div id="referralDisplay" class="ref-display"></div>
 
 </div>
 
 <script>
-  // Read referral code
+(function() {
+
+  // ===== Read referral from URL =====
   const params = new URLSearchParams(window.location.search);
   const refCode = params.get("ref");
-  window.referralCode = refCode ? refCode.trim() : "";
 
-  function toggleButton() {
-    document.getElementById("payButton").disabled = !document.getElementById("agree").checked;
+  let referralCode = "";
+  if (refCode && refCode.trim() !== "") {
+    referralCode = refCode.trim();
+    document.getElementById("referralDisplay").textContent =
+      "Referral Code: " + referralCode;
   }
 
-  function proceedToPayment() {
-    let paymentLink = "https://paystack.shop/pay/hzxapeonk6";
+  // ===== Enable button when checkbox checked =====
+  const checkbox = document.getElementById("agree");
+  const button = document.getElementById("payButton");
 
-    if (window.referralCode) {
+  checkbox.addEventListener("change", function() {
+    button.disabled = !checkbox.checked;
+  });
+
+  // ===== Redirect to Paystack with referral =====
+  button.addEventListener("click", function() {
+    let paymentLink = "https://paystack.shop/pay/6bgk4jhv4n";
+
+    if (referralCode !== "") {
       const joiner = paymentLink.includes("?") ? "&" : "?";
-      paymentLink += joiner + "ref=" + encodeURIComponent(window.referralCode);
+      paymentLink += joiner + "ref=" + encodeURIComponent(referralCode);
     }
 
     window.location.href = paymentLink;
-  }
+  });
+
+})();
 </script>
 
 </body>
