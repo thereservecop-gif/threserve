@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frosfood Reserve – Essential Installment Consent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    .consent-box {
+      background: #fafafa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #1a7f37;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+<h2>Frosfood Reserve – Essential Installment</h2>
+<p><strong>Please review and confirm before proceeding to payment.</strong></p>
+
+<div class="consent-box">
+
+<p><strong>By proceeding with payment, you acknowledge and agree to the following:</strong></p>
+
+<ul>
+<li>Frosfood Reserve operates as a structured food allocation system and not as a savings, thrift, or investment platform.</li>
+
+<li>This payment represents an installment toward your Essential Reserve allocation for the 2026 cycle (March–December).</li>
+
+<li>Contributions made before the Allocation Lock Date (June 1ST) may be refunded minus the applicable Early Exit Administrative Fee.</li>
+
+<li>After the Allocation Lock Date, contributions are committed to secured bulk procurement and are not refundable in cash.</li>
+
+<li>If full contributions are not completed by the final deadline, you will receive a proportional food allocation strictly based on the value contributed.</li>
+
+<li>Late payments may not benefit from early price protection or secured bulk purchase pricing.</li>
+
+<li>Item substitutions may occur in cases of supplier shortages or market volatility, while maintaining equivalent value.</li>
+
+<li>Doorstep delivery applies only during the official December distribution window and within designated service areas.</li>
+</ul>
+
+<p><strong>By ticking the box below and proceeding to payment, you confirm acceptance of these terms and the full Customer Agreement.</strong></p>
+
+</div>
+
+<label>
+  <input type="checkbox" id="agree" onclick="toggleButton()">  
+  I have read and agree to the Frosfood Reserve Payment Terms.
+</label>
+
+<br><br>
+
+<button id="payButton" disabled onclick="proceedToPayment()">
+Proceed to Secure Payment
+</button>
+
+</div>
+
+<script>
+  // Read referral code
+  const params = new URLSearchParams(window.location.search);
+  const refCode = params.get("ref");
+  window.referralCode = refCode ? refCode.trim() : "";
+
+  function toggleButton() {
+    document.getElementById("payButton").disabled = !document.getElementById("agree").checked;
+  }
+
+  function proceedToPayment() {
+    let paymentLink = "https://paystack.shop/pay/hzxapeonk6";
+
+    if (window.referralCode) {
+      const joiner = paymentLink.includes("?") ? "&" : "?";
+      paymentLink += joiner + "ref=" + encodeURIComponent(window.referralCode);
+    }
+
+    window.location.href = paymentLink;
+  }
+</script>
+
+</body>
+</html>
