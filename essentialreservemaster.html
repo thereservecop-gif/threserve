@@ -3,6 +3,7 @@
 <head>
   <title>Frosfood Reserve – Essential Package</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,7 +13,7 @@
     }
 
     .container {
-      max-width: 650px;
+      max-width: 700px;
       margin: auto;
       background: #ffffff;
       padding: 25px;
@@ -30,6 +31,10 @@
       border: 1px solid #ddd;
       border-radius: 6px;
       margin-bottom: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
     }
 
     .button-group button {
@@ -68,12 +73,30 @@
 <p><strong>Please review and confirm before selecting a payment option.</strong></p>
 
 <div class="consent-box">
-  <ul>
-    <li>This is a structured food allocation system (not savings or investment).</li>
-    <li>Payments contribute toward December distribution (March–December cycle).</li>
-    <li>Refund policies apply before Allocation Lock Date.</li>
-    <li>After lock date, payments are committed to procurement.</li>
-  </ul>
+
+<p><strong>By proceeding with payment, you acknowledge and agree to the following:</strong></p>
+
+<ul>
+<li>Frosfood Reserve operates as a structured food allocation system and not as a savings, thrift, or investment platform.</li>
+
+<li>Your monthly payment is a contribution toward your December Food Reserve allocation for the 2026 cycle (March–December).</li>
+
+<li>Contributions made before the Allocation Lock Date (June 1ST) may be refunded minus a 10% Early Exit Administrative and Allocation Reversal Fee.</li>
+
+<li>After the Allocation Lock Date, contributions are committed to secured bulk procurement and are not refundable in cash.</li>
+
+<li>If full contributions are not completed by the final deadline, you will receive a proportional food allocation strictly based on the value contributed.</li>
+
+<li>Late payments may not benefit from early price protection or secured bulk purchase pricing.</li>
+
+<li>Item substitutions may occur in cases of supplier shortages or market volatility, while maintaining equivalent value.</li>
+
+<li>Doorstep delivery applies only during the official December distribution window and within designated service areas.</li>
+
+</ul>
+
+<p><strong>By ticking the box below and proceeding to payment, you confirm acceptance of these terms and the full Customer Agreement.</strong></p>
+
 </div>
 
 <label>
@@ -82,6 +105,7 @@
 </label>
 
 <div class="button-group">
+
   <button id="subscribeBtn" class="primary" disabled onclick="goSubscription()">
     Subscribe (Automatic Monthly Billing – 10 Months)
   </button>
@@ -89,6 +113,7 @@
   <button id="manualBtn" class="secondary" disabled onclick="goManual()">
     Pay Monthly Manually (Return Each Month)
   </button>
+
 </div>
 
 </div>
